@@ -1,32 +1,12 @@
 #include<iostream>   
 #include<stdbool.h>
 using namespace std;
+
 void swap(int *a, int *b)
 {
     int temp=*a;
     *a=*b;
     *b=temp;
-}
-
-void SelectionSort(int A[],int n)
-{
-    bool swapped;
-    int i,j;
-    for(i=0;i<n-1;i++)
-    {
-        swapped=false;
-        for(j=0;j<n-i-1;j++)
-        {
-            if(A[j]>A[j+1])
-            {
-                swap(&A[j],&A[j+1]);
-                swapped=true;
-            }
-            
-        }
-        if(swapped==false)
-                break;
-    }
 }
 void display(int A[],int n)
 {
@@ -36,11 +16,30 @@ void display(int A[],int n)
         cout<<A[i]<<" ";
     }
 }
+
+void InsertionSort(int A[],int n)
+{
+    int i,j;
+    for(i=1;i<n;i++)
+    {
+        for(j=0;j<i;j++)
+        {
+            if(A[i]<A[j])
+            {
+                swap(&A[j],&A[i]);
+            }
+            
+        }
+        display(A,n);
+        cout<<endl;
+    }
+}
+
 int main()
 {
-    int arr[]={ 64, 34, 25, 12, 22, 11, 90 };
+    int arr[]={ 64, 34, 25, 12, 22, 11, 9 };
     int n = sizeof(arr) / sizeof(arr[0]);
-    SelectionSort(arr,n);
+    InsertionSort(arr,n);
     display(arr,n);
     return 0;
 
