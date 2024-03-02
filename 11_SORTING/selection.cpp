@@ -18,24 +18,22 @@ void display(int A[],int n)
 }
 void SelectionSort(int A[],int n)
 {
-    bool swapped;
     int i,j;
     for(i=0;i<n-1;i++)
     {
-        int min=A[i];
-        for(j=0;j<n-i-1;j++)
+        int min=i;
+        for(j=i+1;j<n;j++)
         {
             
-            if(min>a[j])
+            if(A[min]>A[j])
             {
-                swap(&A[j],&min);
-                
+                min=j;
             }
-            display(A,n);
-            cout<<endl;
+            
         }
-        if(swapped==false)
-                break;
+        if(A[min]!=A[i])swap(&A[min],&A[i]);
+        display(A,n);
+        cout<<endl;
     }
 }
 
